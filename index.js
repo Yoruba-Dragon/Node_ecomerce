@@ -14,10 +14,15 @@ const Carts = require('./models/cart.models');
 const Orders = require('./models/orders.models');
 const cartRoutes = require('./routes/cart.routes');
 const orderRoutes = require('./routes/orders.routes');
+const cookieParser = require('cookie-parser');
+
+
 const api = process.env.API_URL;
 
 
+
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(morgan('tiny'));
 app.use(`${api}/products`, productRouter);
 app.use(`${api}/categories`, categoryRoutes);
