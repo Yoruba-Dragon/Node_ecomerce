@@ -11,7 +11,9 @@ const productRouter = require('./routes/poducts.routes');
 const categoryRoutes = require('./routes/categories.routes');
 const authRoutes= require('./routes/auth.routes')
 const Carts = require('./models/cart.models');
+const Orders = require('./models/orders.models');
 const cartRoutes = require('./routes/cart.routes');
+const orderRoutes = require('./routes/orders.routes');
 const api = process.env.API_URL;
 
 
@@ -21,6 +23,7 @@ app.use(`${api}/products`, productRouter);
 app.use(`${api}/categories`, categoryRoutes);
 app.use(`${api}/auth`, authRoutes);
 app.use(`${api}/cart`, cartRoutes);
+app.use(`${api}/orders`, orderRoutes);
 
 mongoose.connect(process.env.mongoURI, {
   useNewUrlParser: true,
