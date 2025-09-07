@@ -1,12 +1,13 @@
 const express= require('express')
 const categoryController = require("../controllers/categories.controllers");
+const {  protect, restrictTo } = require("../middleware/auth.middleware");
 const router = express.Router();
 
 
 router.get('/', categoryController.getAllCategories);
-router.post('/', categoryController.createCategory);
+router.post('/', protect, restrictTo('admin'), categoryController.createCategory);
 router.get('/:id', categoryController.getCategory);
-router.put('/:id', categoryController.updateCategory);
-router.delete('/:id', categoryController.deleteCategory);
+router.put('/:id', protect, restrictTo('admin'), categoryController.updateCategory);
+router.delete('/:id', protect, restrictTo('admin'), categoryController.deleteCategory);
 
 module.exports = router;
